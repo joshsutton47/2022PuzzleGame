@@ -28,6 +28,11 @@ public class FrogJump : MonoBehaviour
         //frogBody.isKinematic = true;
     }
 
+    public bool getJump()
+    {
+        return canJump;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -47,12 +52,16 @@ public class FrogJump : MonoBehaviour
 
             if (Input.GetMouseButtonUp(0))
             {
-                //canJump = false;
+                canJump = false;
                 frogBody.useGravity = true;
                 frogBody.velocity = mouseDelta * velocityMult;
 
             }
 
+        }
+        else if (frogBody.velocity == Vector3.zero)
+        {
+            canJump = true;
         }
        
     }
