@@ -55,10 +55,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Hazard.cs" />
     <Compile Include="Assets\Scripts\ObstacleConnect.cs" />
-    <Compile Include="Assets\Scripts\FrogJump.cs" />
+    <Compile Include="Assets\Scripts\TrackingCam.cs" />
     <Compile Include="Assets\Scripts\FrogTongue.cs" />
     <Compile Include="Assets\Scripts\FrogTongueLine.cs" />
-    <Compile Include="Assets\Scripts\TrackingCam.cs" />
+    <Compile Include="Assets\Scripts\FrogJump.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -282,9 +282,6 @@
     </Reference>
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>D:\Program Files\Unity\2020.3.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0\Runtime\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:\Program Files\Unity\2020.3.26f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>

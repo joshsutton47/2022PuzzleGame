@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f394a59a8ac88b347bbb051ca375677d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickable: 0
 --- !u!65 &226142269
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -453,6 +454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f394a59a8ac88b347bbb051ca375677d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickable: 0
 --- !u!65 &351239284
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -575,6 +577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f394a59a8ac88b347bbb051ca375677d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickable: 0
 --- !u!65 &414308081
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -778,6 +781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f394a59a8ac88b347bbb051ca375677d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickable: 0
 --- !u!65 &514346886
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1515,6 +1519,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1166598341}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1175540942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1175540943}
+  m_Layer: 0
+  m_Name: Tongue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1175540943
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175540942}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.044, z: -0.267}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1341808157}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1236877959
 GameObject:
   m_ObjectHideFlags: 0
@@ -1688,9 +1722,10 @@ GameObject:
   - component: {fileID: 1341808157}
   - component: {fileID: 1341808156}
   - component: {fileID: 1341808158}
-  - component: {fileID: 1341808160}
   - component: {fileID: 1341808159}
+  - component: {fileID: 1341808162}
   - component: {fileID: 1341808161}
+  - component: {fileID: 1341808160}
   m_Layer: 0
   m_Name: Frog
   m_TagString: Frog
@@ -1728,6 +1763,7 @@ Transform:
   - {fileID: 1166598342}
   - {fileID: 624516451}
   - {fileID: 1430998281}
+  - {fileID: 1175540943}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
@@ -1758,7 +1794,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1341808160
 MonoBehaviour:
@@ -1769,11 +1805,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1341808155}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9468b24968bacb43b7cf1b9264ccba7, type: 3}
+  m_Script: {fileID: 11500000, guid: ac45722d0ffe9234c9b276055e200d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVelocity: 10
-  velocityMult: 3
+  frogTongue: {fileID: 1175540942}
+  tongue: {fileID: 1341808161}
 --- !u!114 &1341808161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1786,7 +1822,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 060a571a156000c46bb075e9309a9b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frog: {fileID: 1341808160}
+  frog: {fileID: 1341808162}
+--- !u!114 &1341808162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341808155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9eb81132ee337849ba7e07b873a80c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVelocity: 10
+  velocityMult: 3
 --- !u!1 &1430998280
 GameObject:
   m_ObjectHideFlags: 0
@@ -2261,6 +2311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f394a59a8ac88b347bbb051ca375677d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickable: 0
 --- !u!65 &1780638769
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2558,6 +2609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f394a59a8ac88b347bbb051ca375677d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickable: 0
 --- !u!65 &2111597848
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2742,3 +2794,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f394a59a8ac88b347bbb051ca375677d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickable: 0

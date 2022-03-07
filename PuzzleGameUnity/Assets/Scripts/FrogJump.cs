@@ -32,7 +32,7 @@ public class FrogJump : MonoBehaviour
     {
         return canJump;
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -63,6 +63,6 @@ public class FrogJump : MonoBehaviour
         {
             canJump = true;
         }
-       
+
     }
 }

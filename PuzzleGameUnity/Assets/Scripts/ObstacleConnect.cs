@@ -4,12 +4,24 @@ using UnityEngine;
 
 public class ObstacleConnect : MonoBehaviour
 {
+    public bool clickable = false;
+
     private Rigidbody connectRB;
     private void OnTriggerEnter(Collider other)
     {
         
        
         
+    }
+
+    public void OnMouseOver()
+    {
+        clickable = true;    
+    }
+
+    public void OnMouseExit()
+    {
+        clickable = false;
     }
 
     private void OnCollisionEnter(Collision collision)
