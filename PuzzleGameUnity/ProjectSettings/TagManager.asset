@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Frog
   - Obstacle
+  - Hazard
   layers:
   - Default
   - TransparentFX

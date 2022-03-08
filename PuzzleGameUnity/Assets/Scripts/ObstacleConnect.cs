@@ -4,46 +4,30 @@ using UnityEngine;
 
 public class ObstacleConnect : MonoBehaviour
 {
-    public bool clickable = false;
+    public FrogTongue tongue;
 
+    //public FrogTongueLine tLine;
     private Rigidbody connectRB;
-    private void OnTriggerEnter(Collider other)
-    {
-        
-       
-        
-    }
 
     public void OnMouseOver()
     {
-        clickable = true;    
-    }
-
-    public void OnMouseExit()
-    {
-        clickable = false;
+        if (Input.GetMouseButtonDown(0))
+        {
+            //tLine.drawTongue = true;
+            //tLine.GetPoints(this.gameObject.transform);
+            tongue.MoveFrogTo(this.gameObject);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if ((collision.gameObject.tag == "Frog"))
         {
+            //tLine.drawTongue = false;
             connectRB = collision.gameObject.GetComponent<Rigidbody>();
             connectRB.useGravity = false;
             connectRB.velocity = Vector3.zero;
             connectRB.angularVelocity = Vector3.zero;
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

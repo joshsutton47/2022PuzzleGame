@@ -5,12 +5,15 @@ using UnityEngine;
 public class FrogTongueLine : MonoBehaviour
 {
     #region Variables
-    private bool drawTongue = false;
+    public bool drawTongue = false;
     private LineRenderer line;
-    private Vector3 objLocation;
-    public GameObject frogTongue;
-    private List<Vector3> points;
+    private Transform objLocation;
+    public Transform frogTongue;
     public FrogTongue tongue;
+    private ObstacleConnect connection;
+
+    public LineRenderer lr;
+    private List<Transform> points;
     #endregion
 
     static public FrogTongueLine s;
@@ -19,41 +22,47 @@ public class FrogTongueLine : MonoBehaviour
     void Start()
     {
 
+
     }
     void Awake()
     {
 
         drawTongue = false;
-        line.enabled = false;
-        //frogTongue = this.gameObject;
-        points = new List<Vector3>();
+        lr = GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (tongue.GetTarget() != null)
-        {
-            drawTongue = true;
-            objLocation = tongue.GetTarget();
 
-        }
-        if (!drawTongue)
+    public void SetUpLine(List<Transform> points)
+    {
+        lr.positionCount = points.Count;
+        this.points = points;
+    }
+
+    public void GetPoints(Transform loc)
+    {
+        drawTongue = true;
+        while (drawTongue)
         {
-            points.Add(frogTongue.transform.position);
             points.Add(objLocation);
-
-
-            line.enabled = true;
-
-
+            points.Add(loc);
+            SetUpLine(points);
         }
+        
     }
 
-    public void clearTongue()
+ /*   void Update()
     {
-        line.enabled = false;
-        points = new List<Vector3>();
-
-    }
+        if (drawTongue)
+        {
+            if (tongue.GetTarget() != null)
+            {
+                objLocation = tongue.GetTarget();
+                for (int i = 0; i < points.Count - 1; i++)
+                {
+                    lr.SetPosition(i, points[i].position);
+                }
+            }
+        }
+    }*/
 }

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FrogJump : MonoBehaviour
 {
@@ -10,8 +12,12 @@ public class FrogJump : MonoBehaviour
     private Transform aimPos;
     public float maxVelocity;
     public float velocityMult = 8f;
-
+    public float maxMagnitude = 3;
+    public GameManager frogManager;
+    public int totalJumps = 100;
     Rigidbody frogBody;
+    public Frog froggy;
+    public Text jumpText;
 
 
     #endregion
@@ -23,19 +29,19 @@ public class FrogJump : MonoBehaviour
         canJump = true;
     }
 
-    private void OnMouseDown()
-    {
-        //frogBody.isKinematic = true;
-    }
+    public int getRemainingJumps;
 
     public bool getJump()
     {
         return canJump;
     }
-    
-    // Update is called once per frame
+
     void Update()
     {
+        if(totalJumps <= 0)
+        {
+            froggy.died = true;
+        }
         if (canJump)
         {
             currentPos = this.transform.position;
@@ -43,7 +49,7 @@ public class FrogJump : MonoBehaviour
             mousePos2D.z = -Camera.main.transform.position.z;
             Vector3 mousePos3D = Camera.main.ScreenToWorldPoint(mousePos2D);
             Vector3 mouseDelta = mousePos3D - currentPos;
-            float maxMagnitude = this.GetComponent<SphereCollider>().radius;
+            
             if (mouseDelta.magnitude > maxMagnitude)
             {
                 mouseDelta.Normalize();
@@ -55,11 +61,17 @@ public class FrogJump : MonoBehaviour
                 canJump = false;
                 frogBody.useGravity = true;
                 frogBody.velocity = mouseDelta * velocityMult;
+                totalJumps--;
+                jumpText.text = "Jumps Remaining: " + totalJumps;
 
             }
 
         }
         else if (frogBody.velocity == Vector3.zero)
+        {
+            canJump = true;
+        }
+        if (froggy.died)
         {
             canJump = true;
         }

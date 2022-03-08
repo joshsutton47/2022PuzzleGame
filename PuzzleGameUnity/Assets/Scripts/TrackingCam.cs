@@ -39,8 +39,8 @@ public class TrackingCam : MonoBehaviour
         if (POI.tag == "Projectile")
 
 
-        //Limit the X and Y to minimum values
-        destination.x = Mathf.Max(minXY.x, destination.x);
+            //Limit the X and Y to minimum values
+            destination.x = Mathf.Max(minXY.x, destination.x);
         destination.y = Mathf.Max(minXY.y, destination.y);
         //Interpolate from the current camera position toward destination
         destination = Vector3.Lerp(transform.position, destination, easing);
