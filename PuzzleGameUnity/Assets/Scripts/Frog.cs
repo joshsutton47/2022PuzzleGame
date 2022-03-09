@@ -16,6 +16,7 @@ public class Frog : MonoBehaviour
     {
         if (other.gameObject.tag == "Hazard")
         {
+            Debug.Log("died");
             died = true;
         }
     }

@@ -27,6 +27,8 @@ public class FrogJump : MonoBehaviour
     {
         frogBody = this.GetComponent<Rigidbody>();
         canJump = true;
+        jumpText = GameObject.Find("JumpText").GetComponent<Text>();
+        froggy = this.gameObject.GetComponent<Frog>();
     }
 
     public int getRemainingJumps;

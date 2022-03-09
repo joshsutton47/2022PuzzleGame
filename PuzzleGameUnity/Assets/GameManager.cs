@@ -14,7 +14,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement; //libraries for accessing scenes
-
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -73,6 +73,8 @@ public class GameManager : MonoBehaviour
     static public int score;  //score value
     public TrackingCam tracker;
     private Fly fly;
+    public Text livesText;
+    public Canvas startCanvas;
     public int Score { get { return score; } set { score = value; } }//access to private variable died [get/set methods]
 
     [SerializeField] //Access to private variables in editor
@@ -133,26 +135,49 @@ public class GameManager : MonoBehaviour
         mCamera = GameObject.Find("Main Camera");
         tracker = mCamera.GetComponent<TrackingCam>();
         fly = GameObject.Find("Fly").GetComponent<Fly>();
+        livesText = GameObject.Find("LivesText").GetComponent<Text>();
         //store the current scene
         currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         lives = 3;
+        startCanvas = GameObject.Find("FrogCanvas").GetComponent<Canvas>();
 
         //Get the saved high score
         GetHighScore();
 
     }//end Awake()
 
+    private void OnEnable()
+    {
+        lives = 3;    
+    }
 
     // Update is called once per frame
     private void Update()
     {
+        //if (Input.GetMouseButton(0)){
+        // Debug.Log("pressed the button");
+        if (player == null)
+        {
+            Debug.Log("yeh the frog is gone...");
+            player = GameObject.FindGameObjectWithTag("Frog");
+            playerPrefab = GameObject.FindGameObjectWithTag("Frog");
+            spawn = GameObject.Find("Spawn").transform;
+            froggy = player.GetComponent<Frog>();
+            mCamera = GameObject.Find("Main Camera");
+            tracker = mCamera.GetComponent<TrackingCam>();
+            fly = GameObject.Find("Fly").GetComponent<Fly>();
+            livesText = GameObject.Find("LivesCount").GetComponent<Text>();
+        }
+        // }
         if (froggy.died)
         {
             CheckForLives();
+            Debug.Log("frog did die");
         }
         if (fly.flyCaught)
         {
-            NextLevel();
+            //fly.flyCaught = false;
+            //NextLevel();
         }
         //if ESC is pressed , exit game
         if (Input.GetKey("escape")) { ExitGame(); }
@@ -182,7 +207,6 @@ public class GameManager : MonoBehaviour
         gameLevelsCount = 1; //set the count for the game levels
         loadLevel = gameLevelsCount - 1; //the level from the array
         SceneManager.LoadScene(gameLevels[loadLevel]); //load first game level
-
         gameState = gameStates.Playing; //set the game state to playing
 
         lives = 3; //set the number of lives
@@ -206,14 +230,18 @@ public class GameManager : MonoBehaviour
 
     public void CheckForLives()
     {
+        Debug.Log("Checking Lives");
         if (lives-1 > 0)
         {
+            froggy.StopMovement();
+            player.transform.position = spawn.transform.position;
+            Debug.Log("gonna snag a life from ya real quick");
             lives--;
+            livesText.text = "Lives: " + lives;
             Debug.Log(lives);
             //Destroy(player);
             //player = Instantiate<GameObject>(playerPrefab);
-            froggy.StopMovement();
-            player.transform.position = spawn.transform.position;
+            
             froggy.died = false;
             //tracker.POI = player;
         }

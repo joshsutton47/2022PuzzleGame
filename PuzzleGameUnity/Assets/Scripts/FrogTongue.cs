@@ -14,6 +14,7 @@ public class FrogTongue : MonoBehaviour
     private bool jumping;
     private ObstacleConnect connection;
     public FrogTongueLine tLine;
+    public GameObject manager;
     #endregion
 
     public Vector3 GetTarget()
@@ -46,6 +47,8 @@ public class FrogTongue : MonoBehaviour
     {
         frogBody = this.GetComponent<Rigidbody>();
         nearObjs = new List<GameObject>();
+        frog = this.gameObject.GetComponent<FrogJump>();
+        manager = GameObject.Find("GameManager");
     }
     public void MoveFrogTo(GameObject target)
     {
@@ -56,6 +59,14 @@ public class FrogTongue : MonoBehaviour
             Vector3 distDelta = closestObj - frogLocation;
             frogBody.velocity = distDelta * 2;
 
+        }
+    }
+
+    private void Update()
+    {
+        if (!manager.GetComponent<GameManager>().enabled)
+        {
+            manager.GetComponent<GameManager>().enabled = true;
         }
     }
 }

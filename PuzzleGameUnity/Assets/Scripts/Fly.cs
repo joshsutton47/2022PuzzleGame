@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Fly : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class Fly : MonoBehaviour
         if (other.gameObject.tag == "Frog")
         {
             flyCaught = true;
+            SceneManager.LoadScene("Level2");
         }
     }
 }

@@ -19,6 +19,7 @@ public class TrackingCam : MonoBehaviour
 
     private void Awake()
     {
+        POI = GameObject.Find("Frog");
         camZ = this.transform.position.z;
     }//end Awake()
 

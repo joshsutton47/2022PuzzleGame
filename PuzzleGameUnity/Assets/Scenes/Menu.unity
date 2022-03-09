@@ -294,6 +294,8 @@ MonoBehaviour:
   playerPrefab: {fileID: 0}
   spawn: {fileID: 0}
   tracker: {fileID: 0}
+  livesText: {fileID: 0}
+  startCanvas: {fileID: 0}
   levelLost: 0
   defaultEndMessage: Game Over
   looseMessage: You Lose
@@ -301,7 +303,9 @@ MonoBehaviour:
   endMsg: 
   startScene: Level1
   gameOverScene: GameOver
-  gameLevels: []
+  gameLevels:
+  - Level1
+  - Level2
   gameLevelsCount: 0
   nextLevel: 0
   gameState: 0
@@ -937,6 +941,7 @@ PrefabInstance:
     - {fileID: 3561735643230885760, guid: 9a0b7d5ffdaabb7458291aa79c0a048e, type: 3}
     - {fileID: 3561735643230885761, guid: 9a0b7d5ffdaabb7458291aa79c0a048e, type: 3}
     - {fileID: 3561735643230885763, guid: 9a0b7d5ffdaabb7458291aa79c0a048e, type: 3}
+    - {fileID: 6084404987561645983, guid: 9a0b7d5ffdaabb7458291aa79c0a048e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9a0b7d5ffdaabb7458291aa79c0a048e, type: 3}
 --- !u!1 &1928530095
 GameObject:
@@ -1019,7 +1024,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2066523653
 GameObject:
